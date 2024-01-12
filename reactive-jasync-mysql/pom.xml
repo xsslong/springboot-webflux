@@ -69,10 +69,6 @@
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
-                <targetPath>${project.build.directory}/classes</targetPath>
-                <includes>
-                    <include>**/*.*</include>
-                </includes>
             </resource>
             <!--如果jsp页面不放在该目录下，运行时无法访问到-->
             <resource>

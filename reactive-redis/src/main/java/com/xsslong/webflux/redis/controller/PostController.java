@@ -19,7 +19,7 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("")
+    @GetMapping("/list")
     public Flux<Iterable<Post>> list() {
         return Flux.just(postRepository.findAll());
     }

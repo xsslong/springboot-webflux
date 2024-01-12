@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
  * @author HelloWood
  */
 @EnableMongoAuditing
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.xsslong.webflux.redis.repository")
 public class ReactiveRouterApplication {
 
     public static void main(String[] args) {

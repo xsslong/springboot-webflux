@@ -9,7 +9,7 @@ import org.springframework.data.r2dbc.repository.config.EnableR2dbcRepositories;
  * @author HelloWood
  */
 @EnableR2dbcRepositories
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class, scanBasePackages = "com.xsslong.webflux.mysql.repository")
 public class MySQLApplication {
 
     public static void main(String[] args) {

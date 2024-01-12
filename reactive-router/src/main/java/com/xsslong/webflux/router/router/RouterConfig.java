@@ -4,11 +4,10 @@ import com.xsslong.webflux.router.handler.PostHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.reactive.function.server.RequestPredicates;
 import org.springframework.web.reactive.function.server.RouterFunction;
+import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
-
-import static org.springframework.web.reactive.function.server.RequestPredicates.*;
-import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 /**
  * @author HelloWood
@@ -19,10 +18,10 @@ public class RouterConfig {
 
     @Bean
     public RouterFunction<ServerResponse> routes(PostHandler postHandler) {
-        return route(GET("/posts"), postHandler::list)
-                .andRoute(POST("/posts").and(contentType(MediaType.APPLICATION_JSON)), postHandler::save)
-                .andRoute(GET("/posts/{id}"), postHandler::get)
-                .andRoute(PUT("/posts/{id}").and(contentType(MediaType.APPLICATION_JSON)), postHandler::update)
-                .andRoute(DELETE("/posts/{id}"), postHandler::delete);
+        return RouterFunctions.route(RequestPredicates.GET("/posts"), postHandler::list)
+                .andRoute(RequestPredicates.POST("/posts").and(RequestPredicates.contentType(MediaType.APPLICATION_JSON)), postHandler::save)
+                .andRoute(RequestPredicates.GET("/posts/{id}"), postHandler::get)
+                .andRoute(RequestPredicates.PUT("/posts/{id}").and(RequestPredicates.contentType(MediaType.APPLICATION_JSON)), postHandler::update)
+                .andRoute(RequestPredicates.DELETE("/posts/{id}"), postHandler::delete);
     }
 }
