@@ -1,0 +1,12 @@
+server:
+  port: 8084
+
+# MongoDB Config
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: blog
+#      username:
+#      password:

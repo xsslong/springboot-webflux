@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/reactive-multiple/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/reactive-redis/src/main/resources/archetype-resources" includeSubdirectories="true" />
+      <directory url="file://$PROJECT_DIR$/reactive-router/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="reactive-jasync-mysql" />
+        <module name="reactive-redis" />
+        <module name="reactive-router" />
+        <module name="reactive-stream" />
+        <module name="reactive-multiple" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="reactive-jasync-mysql" options="-parameters" />
+      <module name="reactive-multiple" options="-parameters" />
+      <module name="reactive-redis" options="-parameters" />
+      <module name="reactive-router" options="-parameters" />
+      <module name="reactive-stream" options="-parameters" />
+      <module name="springboot-webflux" options="" />
+    </option>
+  </component>
+</project>
