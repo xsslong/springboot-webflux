@@ -2,6 +2,7 @@ package com.xsslong.webflux.redis.controller;
 
 import io.github.helloworlde.redis.RedisApplicationTests;
 import com.xsslong.webflux.redis.model.Post;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,6 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static org.junit.Assert.assertNotNull;
 
 public class PostControllerTest extends RedisApplicationTests {
 
@@ -39,10 +38,10 @@ public class PostControllerTest extends RedisApplicationTests {
                 .expectStatus().isOk()
                 .returnResult(Post.class);
 
-        assertNotNull("Result body should not be null", result);
-        assertNotNull("Result body content should not be null", result.getResponseBody());
+        Assert.assertNotNull("Result body should not be null", result);
+        Assert.assertNotNull("Result body content should not be null", result.getResponseBody());
 
         List<Post> postList = result.getResponseBody().toStream().collect(Collectors.toList());
-        assertNotNull("The result body list should not be null", postList);
+        Assert.assertNotNull("The result body list should not be null", postList);
     }
 }

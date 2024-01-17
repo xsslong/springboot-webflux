@@ -1,11 +1,35 @@
 server:
-    port: 8081
+  port: 8081
 spring:
-    datasource:
-        database: post
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        host: localhost
-        password: root
-        port: 3306
-        url: jdbc:mysql://localhost:3306/post?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
-        username: root
+  datasource:
+    database: post
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    jdbcUrl: jdbc:mysql://localhost:3306/post?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+    password: root
+    port: 3306
+    username: root
+
+#spring:
+#  datasource:
+#    database: post
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    host: localhost
+#    jdbcUrl: jdbc:mysql://localhost:3306/post?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+#    password: root
+#    port: 3306
+#    username: root
+#  r2dbc:
+#    url: jdbc:mysql://localhost:3306/post?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&serverTimezone=GMT%2B8
+#    username: root
+#    password: root
+#    pool:
+#      enabled: true
+#      max-size: 20
+#      validation-query: SELECT 1
+#      initial-size: 5
+#      max-idle-time: 30m
+#  data:
+#    r2dbc:
+#      repositories:
+#        enabled: true

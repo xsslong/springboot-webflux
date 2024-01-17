@@ -5,6 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -27,6 +28,6 @@ public class Post {
     private String content;
 
     @CreatedDate
-    private Date createDate;
+    private LocalDateTime createDate;
 
 }

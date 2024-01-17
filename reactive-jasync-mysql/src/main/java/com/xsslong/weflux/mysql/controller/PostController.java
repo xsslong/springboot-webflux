@@ -22,7 +22,7 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping
+    @GetMapping("/")
     public Flux<Post> list() {
         return postRepository.findAll();
     }
@@ -30,19 +30,19 @@ public class PostController {
     @GetMapping("/{id}")
     public Mono<Post> get(@PathVariable("id") Long id) {
         return postRepository.findById(id)
-                             .switchIfEmpty(Mono.error(new NotFoundException(String.valueOf(id))));
+                .switchIfEmpty(Mono.error(new NotFoundException(String.valueOf(id))));
     }
 
     @PutMapping("/{id}")
     public Mono<Post> update(@PathVariable("id") Long id, @RequestBody Post post) {
         return postRepository.findById(id)
-                             .switchIfEmpty(Mono.error(new NotFoundException(String.valueOf(id))))
-                             .map(p -> {
-                                 p.setTitle(post.getTitle());
-                                 p.setContent(post.getContent());
-                                 return p;
-                             })
-                             .flatMap(p -> postRepository.save(p));
+                .switchIfEmpty(Mono.error(new NotFoundException(String.valueOf(id))))
+                .map(p -> {
+                    p.setTitle(post.getTitle());
+                    p.setContent(post.getContent());
+                    return p;
+                })
+                .flatMap(p -> postRepository.save(p));
     }
 
     @PostMapping

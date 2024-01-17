@@ -1,14 +1,15 @@
 package com.xsslong.weflux.mysql.config;
 
-import com.github.jasync.sql.db.SSLConfiguration;
 import com.github.jasync.r2dbc.mysql.JasyncConnectionFactory;
+import com.github.jasync.sql.db.SSLConfiguration;
 import com.github.jasync.sql.db.mysql.pool.MySQLConnectionFactory;
 import io.r2dbc.spi.ConnectionFactory;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.r2dbc.config.AbstractR2dbcConfiguration;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author HelloWood
@@ -32,7 +33,7 @@ public class DatabaseConfig extends AbstractR2dbcConfiguration {
     private String database;
 
     @Override
-    public ConnectionFactory connectionFactory() {
+    public @NotNull ConnectionFactory connectionFactory() {
         SSLConfiguration sslConfiguration = new SSLConfiguration();
         com.github.jasync.sql.db.Configuration configuration = new com.github.jasync.sql.db.Configuration(
                 username,
@@ -41,9 +42,8 @@ public class DatabaseConfig extends AbstractR2dbcConfiguration {
                 password,
                 database,
                 sslConfiguration,
-                Charset.forName("UTF-8")
+                StandardCharsets.UTF_8
         );
-
         MySQLConnectionFactory connectionFactory = new MySQLConnectionFactory(configuration);
         return new JasyncConnectionFactory(connectionFactory);
     }
